@@ -20,14 +20,28 @@
 */
 
 function solution(arr1, arr2) {
-  //   let answer = [];
-  //   let newArr = arr1;
-  //   newArr.push(...arr2);
-  //   answer = newArr.sort((a, b) => a - b);
-  //   return answer;
+  let answer = [];
+  let p1 = (p2 = 0);
 
-  let newArr = arr1.concat(arr2);
-  let answer = newArr.sort((a, b) => a - b);
+  arr1.sort((a, b) => a - b);
+  arr2.sort((a, b) => a - b);
+  while (p1 < arr1.length && p2 < arr2.length) {
+    if (arr1[p1] <= arr2[p2]) {
+      answer.push(arr1[p1]);
+      p1++;
+    } else {
+      answer.push(arr2[p2]);
+      p2++;
+    }
+  }
+  while (p1 < arr1.length) {
+    answer.push(arr1[p1]);
+    p1++;
+  }
+  while (p2 < arr2.length) {
+    answer.push(arr2[p2]);
+    p2++;
+  }
   return answer;
 }
 
